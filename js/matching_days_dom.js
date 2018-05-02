@@ -22,7 +22,9 @@ function showWeekdays(weekdaysObj){
 }
 
 function handleDateChange(){
-  var weekdaysDataSample = Object.create(matchingDays.getWeekdaysData());
+  var weekdaysDataSample = matchingDays.getWeekdaysData().weekdays.map(function(weekdays){
+      return Object.create(weekdays);
+  });
   var firstDateVal = firstDateInputElement.value;
   var secondDateVal = secondDatInputElement.value;
 
@@ -32,7 +34,7 @@ function handleDateChange(){
 
      if(isSameWeekday){
       var sameday = weekdays[new Date(firstDateVal).getDay()];
-       weekdaysDataSample.weekdays.map(weekday =>{
+       weekdaysDataSample.map(weekday =>{
          if(weekday.label == sameday){
            weekday.sameweekday = true;
          }
@@ -40,6 +42,7 @@ function handleDateChange(){
 
        showWeekdays(weekdaysDataSample);
        console.log(weekdaysDataSample);
+       console.log(matchingDays.getWeekdaysData());
 
      }
 
