@@ -31,10 +31,22 @@ function MatchingDays(){
     return weekDays[new Date(date).getDay()];
   }
 
+  function updateDayStyle(weekdaysList, day, style){
+    
+    weekdaysList.weekdays.map(weekday =>{
+      if(weekday.label == day){
+        weekday.style = style;
+      }
+    })
+
+    return weekdaysList;
+  }
+
   return {
     isSameWeekday : sameWeekday,
     getWeekdays : checkWeekdays,
     getWeekdaysData : checkWeekdaysData,
-    getWeekday : checkDayName
+    getWeekday : checkDayName,
+    setDayStyle : updateDayStyle
   }
 }

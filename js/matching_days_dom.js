@@ -46,35 +46,19 @@ function handleDateChange(){
 
      if(isSameWeekday){
         var sameday = matchingDays.getWeekday(firstDateVal);
-         weekdaysData.weekdays.map(weekday =>{
-           if(weekday.label == sameday){
-             weekday.style = "green";
-           }
-         })
+        var updatedWeekdaysData = matchingDays.setDayStyle(weekdaysData, sameday, "green");
 
-         showWeekdays(weekdaysData);
-
-         console.log(weekdaysData);
-         console.log(matchingDays.getWeekdaysData());
+         showWeekdays(updatedWeekdaysData);
 
      }else {
        var day1 = matchingDays.getWeekday(firstDateVal);
        var day2 = matchingDays.getWeekday(secondDateVal);
 
-       weekdaysData.weekdays.map(weekday =>{
-         if(weekday.label == day1){
-           weekday.style = "blue";
-         }
+       var updatedWeekdaysData = matchingDays.setDayStyle(weekdaysData, day1, "blue");
 
-         if(weekday.label == day2){
-           weekday.style = "red";
-         }
+       var latestUpdatedWeekdayData = matchingDays.setDayStyle(updatedWeekdaysData, day2, "red");
 
-       })
-
-       showWeekdays(weekdaysData);
-
-       console.log(weekdaysData);
+       showWeekdays(latestUpdatedWeekdayData);
 
      }
 
