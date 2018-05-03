@@ -2,13 +2,13 @@ function MatchingDays(){
   var weekDays = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   var weekdaysData = { weekdays: [
-      {label: "Monday", value: "monday", sameweekday: false, differentDay: null},
-      {label: "Tuesday", value: "tuesday", sameweekday: false, differentDay: null},
-      {label: "Wednesday", value: "wednesday", sameweekday: false, differentDay: null},
-      {label: "Thursday", value: "thursday", sameweekday: false, differentDay: null},
-      {label: "Friday", value: "friday", sameweekday: false, differentDay: null},
-      {label: "Saturday", value: "saturday", sameweekday: false, differentDay: null},
-      {label: "Sunday", value: "sunday", sameweekday: false, differentDay: null}
+      {label: "Monday", value: "monday", style: "normal"},
+      {label: "Tuesday", value: "tuesday", style: "normal"},
+      {label: "Wednesday", value: "wednesday", style: "normal"},
+      {label: "Thursday", value: "thursday", style: "normal"},
+      {label: "Friday", value: "friday", style: "normal"},
+      {label: "Saturday", value: "saturday", style: "normal"},
+      {label: "Sunday", value: "sunday", style: "normal"}
     ]};
 
   function sameWeekday(date1, date2){
@@ -27,9 +27,14 @@ function MatchingDays(){
     return weekdaysData;
   }
 
+  function checkDayName(date){
+    return weekDays[new Date(date).getDay()];
+  }
+
   return {
     isSameWeekday : sameWeekday,
     getWeekdays : checkWeekdays,
-    getWeekdaysData : checkWeekdaysData
+    getWeekdaysData : checkWeekdaysData,
+    getWeekday : checkDayName
   }
 }

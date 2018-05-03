@@ -22,27 +22,59 @@ function showWeekdays(weekdaysObj){
 }
 
 function handleDateChange(){
-  var weekdaysDataSample = matchingDays.getWeekdaysData().weekdays.map(function(weekdays){
-      return Object.create(weekdays);
-  });
+
+
   var firstDateVal = firstDateInputElement.value;
   var secondDateVal = secondDatInputElement.value;
 
   if(firstDateVal !== "" && secondDateVal !== ""){
+
+    var weekdaysDataSample = matchingDays.getWeekdaysData().weekdays;
+
+    var weekdays = [];
+    for(var i=0;i<weekdaysDataSample.length;i++){
+
+      var currentWeek = weekdaysDataSample[i];
+      weekdays.push(Object.create(currentWeek));
+
+    }
+
+    var weekdaysData = {weekdays};
+
      var isSameWeekday = matchingDays.isSameWeekday(firstDateVal, secondDateVal);
-     var weekdays = matchingDays.getWeekdays();
+     var weekdays = matchingDays.getWeekdays(firstDateVal);
 
      if(isSameWeekday){
-      var sameday = weekdays[new Date(firstDateVal).getDay()];
-       weekdaysDataSample.map(weekday =>{
-         if(weekday.label == sameday){
-           weekday.sameweekday = true;
+        var sameday = matchingDays.getWeekday(firstDateVal);
+         weekdaysData.weekdays.map(weekday =>{
+           if(weekday.label == sameday){
+             weekday.style = "green";
+           }
+         })
+
+         showWeekdays(weekdaysData);
+
+         console.log(weekdaysData);
+         console.log(matchingDays.getWeekdaysData());
+
+     }else {
+       var day1 = matchingDays.getWeekday(firstDateVal);
+       var day2 = matchingDays.getWeekday(secondDateVal);
+
+       weekdaysData.weekdays.map(weekday =>{
+         if(weekday.label == day1){
+           weekday.style = "blue";
          }
+
+         if(weekday.label == day2){
+           weekday.style = "red";
+         }
+
        })
 
-       showWeekdays(weekdaysDataSample);
-       console.log(weekdaysDataSample);
-       console.log(matchingDays.getWeekdaysData());
+       showWeekdays(weekdaysData);
+
+       console.log(weekdaysData);
 
      }
 
