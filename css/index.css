@@ -1,3 +1,20 @@
+body{
+  background-color: #e5e4d7;
+}
+
+.wrapper{
+ margin-top: 2%;
+}
+
+h3{
+  text-align: center;
+}
+
+.weekdaysDisplay{
+ padding-top: 1%;
+
+}
+
 .green{
   background-color: green;
 }
@@ -8,4 +25,56 @@
 
 .red{
   background-color: red;
+}
+
+.firstDateDisplay{
+  padding-left: 2%;
+  font-size: 16px;
+}
+
+.secondDateDisplay{
+  padding-left: 2%;
+  font-size: 16px;
+}
+
+span{
+  width: 12%;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 0.5em;
+  margin-bottom: 1.5em;
+
+}
+
+input{
+  width: 30%;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 0.5em;
+  margin-bottom: 1.5em;
+}
+
+@media screen and (max-width: 992px) and (min-width: 330px){
+
+  span{
+    width: 25%;
+    font-size: 80%;
+    margin-left: 3%;
+  }
+
+
 }
